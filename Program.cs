@@ -89,10 +89,22 @@ app.MapGet("/api/promociones", () => Results.Ok(new[] {
     new { id = 2, titulo = "Liquidación Escolar", descuento = 10, categoria = "Laptops" }
 }));
 
-// 3. Recurso de Pedidos
+// 3. Recurso de Pedidos con detalle de productos
 app.MapGet("/api/pedidos", () => Results.Ok(new[] {
-    new { id = 101, cliente = "Mateo Quispe", total = 2499.90, estado = "Completado" },
-    new { id = 102, cliente = "Lucía Morales", total = 1199.90, estado = "En Proceso" }
+    new { 
+        id = 101, 
+        cliente = "Mateo Quispe", 
+        items = new[] { "1x Laptop Lenovo IdeaPad" },
+        total = 2499.90, 
+        estado = "Completado" 
+    },
+    new { 
+        id = 102, 
+        cliente = "Lucía Morales", 
+        items = new[] { "1x Monitor Gamer ASUS TUF 27\"" },
+        total = 1199.90, 
+        estado = "En Proceso" 
+    }
 }));
 // Puerto para Render
 var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
