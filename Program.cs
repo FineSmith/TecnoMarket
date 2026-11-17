@@ -379,40 +379,24 @@ public class Program
         {
             if (string.IsNullOrWhiteSpace(nuevoProducto.Codigo))
             {
-                return Results.BadRequest(new
-                {
-                    mensaje = "El código es obligatorio"
-                });
+                return Results.BadRequest(new{mensaje = "El código es obligatorio"});
             }
             if (string.IsNullOrWhiteSpace(nuevoProducto.Nombre))
             {
-                return Results.BadRequest(new
-                {
-                    mensaje = "El nombre es obligatorio"
-                });
+                return Results.BadRequest(new{mensaje = "El nombre es obligatorio"});
             }
             if (nuevoProducto.Precio < 0)
             {
-                return Results.BadRequest(new
-                {
-                    mensaje = "El precio no puede ser negativo"
-                });
+                return Results.BadRequest(new{mensaje = "El precio no puede ser negativo"});
             }
             if (nuevoProducto.Stock < 0)
             {
-                return Results.BadRequest(new
-                {
-                    mensaje = "El stock no puede ser negativo"
-                });
+                return Results.BadRequest(new{mensaje = "El stock no puede ser negativo"});
             }
             if (nuevoProducto.Descuento < 0 || nuevoProducto.Descuento > 100)
             {
-                return Results.BadRequest(new
-                {
-                    mensaje = "El descuento debe estar entre 0 y 100"
-                });
+                return Results.BadRequest(new{mensaje = "El descuento debe estar entre 0 y 100"});
             }
-
             nuevoProducto.Id = productos.Count == 0
                 ? 1
                 : productos.Max(x => x.Id) + 1;
